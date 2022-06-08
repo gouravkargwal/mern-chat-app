@@ -1,0 +1,34 @@
+.demo-toolbar {
+  background-color: black;
+  color: white;
+  border: none;
+}
+.demo-editor {
+  background-color: black;
+  color: white;
+  height: 118px;
+  overflow: hidden;
+  padding: 10px;
+}
+.demo-editor:hover {
+  overflow-y: auto;
+}
+.demo-wrapper {
+  background-color: black;
+  color: white;
+  height: 20%;
+}
+.button {
+  border: none;
+  padding: 0;
+  background: black;
+}
+.button:hover {
+  border: 2px solid white;
+  box-shadow: none;
+}
+div.button > img {
+  background-color: black;
+  color: white;
+  width: 15px;
+}
