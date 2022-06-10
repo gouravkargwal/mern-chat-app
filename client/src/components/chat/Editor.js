@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
-import "./../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "./Editor.css";
 import { MdSend } from "react-icons/md";
 import bold from "./assets/bold-svgrepo-com.svg";
 import italic from "./assets/italic-svgrepo-com.svg";
@@ -14,10 +11,10 @@ import emoji from "./assets/emoji-svgrepo-com.svg";
 import link from "./assets/link-svgrepo-com.svg";
 import ul from "./assets/bulleted-list-svgrepo-com.svg";
 import ol from "./assets/numbered-list-svgrepo-com.svg";
-import at from "./assets/at-sign-svgrepo-com.svg";
 import add from "./assets/add-svgrepo-com.svg";
 import underline from "./assets/underline-svgrepo-com.svg";
-import arrow from "./assets/right-arrow-send-svgrepo-com.svg";
+import "./../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "./Editor.css";
 
 function uploadImageCallBack(file) {
   return new Promise((resolve, reject) => {

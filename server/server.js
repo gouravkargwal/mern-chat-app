@@ -13,17 +13,21 @@ const io = socket(server, {
   },
 });
 
-global.onlineUsers = new Map();
+const activeUsers = new Map();
 io.on("connection", (socket) => {
-  global.chatSocket = socket;
-  socket.on("add-user", (userId) => {
-    onlineUsers.set(userId, socket.id);
+  socket.on("add-user", (data) => {
+    socket.userId = data;
+    activeUsers.set(data, socket.id);
+    io.emit("add-user", [...activeUsers]);
   });
-
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
+  socket.on("send-message", (data) => {
+    const sendUserSocket = activeUsers.get(data.to);
     if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+      socket.to(sendUserSocket).emit("message-recieve", data.message);
     }
   });
+  // socket.on("disconnect", () => {
+  //   activeUsers.delete(socket.userId);
+  //   io.emit("user-disconnected", socket.userId);
+  // });
 });

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ChatContext } from "../context/ChatContext";
 
-const Welcome = ({ currentUser }) => {
+const Welcome = () => {
+  let { currentUser } = useContext(ChatContext);
   return (
     <div className="flex flex-col justify-center h-full items-center gap-8">
       <img

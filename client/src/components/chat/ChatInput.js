@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import RichEditor from "./Editor";
+import { ChatContext } from "../../context/ChatContext";
 
-const ChatInput = ({ handleSendMsg }) => {
+const ChatInput = () => {
+  let { handleSendMsg } = useContext(ChatContext);
   const [content, setContent] = useState("");
-  console.log(content);
+
   return (
     <div>
       <RichEditor

@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
+import { ChatContext } from "../../context/ChatContext";
 
-const Contact = ({ contacts, currentUser, changeChat }) => {
+const Contact = () => {
+  let { contacts, currentUser, handleChatChange } = useContext(ChatContext);
+
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
 
@@ -14,7 +17,7 @@ const Contact = ({ contacts, currentUser, changeChat }) => {
 
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
-    changeChat(contact);
+    handleChatChange(contact);
   };
   return (
     <>
@@ -25,6 +28,7 @@ const Contact = ({ contacts, currentUser, changeChat }) => {
           </h2>
           <div className="bg-white hover:overflow-y-auto overflow-hidden">
             {contacts.map((contact, index) => {
+              // console.log(contact, "Contact Map", index, "Index Map");
               return (
                 <div
                   className={`contact cursor-pointer ${
