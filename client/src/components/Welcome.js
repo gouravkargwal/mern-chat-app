@@ -4,9 +4,9 @@ import { ChatContext } from "../context/ChatContext";
 const Welcome = () => {
   let { currentUser } = useContext(ChatContext);
   return (
-    <div className="flex flex-col justify-center h-full items-center gap-8">
+    <div className="flex flex-col justify-center h-full items-center gap-8 bg-[#cef5c9]">
       <img
-        src="https://i.gifer.com/RBte.gif"
+        src="https://i.pinimg.com/originals/3b/aa/c0/3baac05f19c1d4f2f3ba69a534cb629c.gif"
         className="block w-2/4 rounded-md"
         alt="gif"
       />

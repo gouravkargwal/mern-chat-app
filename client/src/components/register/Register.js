@@ -18,7 +18,8 @@ const initialValues = {
 const formSchema = Yup.object({
   username: Yup.string()
     .required("Required!")
-    .min(5, "Username must have 5 characters"),
+    .min(3, "Username must have 3 characters")
+    .max(8, "Username must'n exceed 8 characters"),
   email: Yup.string().email("Invalid Email Format").required("Required!"),
   password: Yup.string().required("Required!"),
   confirmPassword: Yup.string().oneOf(
@@ -56,50 +57,55 @@ const Register = () => {
       onSubmit={onSubmit}
       validationSchema={formSchema}
     >
-      <Form className="flex flex-col justify-center items-center h-screen bg-gradient-to-tl from-fuchsia-500 via-red-400 to-emerald-200">
-        <div className="bg-gray-200 rounded-md w-[80vw] max-w-md p-3 flex flex-col gap-4 ">
-          <h2 className="text-center font-sans font-bold text-xl">Register</h2>
+      <Form className="flex flex-col justify-center items-center h-screen bg-[#0f360a]">
+        <div className="bg-[#cef5c9] rounded-md w-[80vw] max-w-md p-3 flex flex-col gap-4 ">
+          <h2 className="text-center font-sans font-bold text-xl text-[#0f360a]">
+            Register
+          </h2>
           <Field
             type="text"
             name="username"
             placeholder="Username"
-            className="p-3 rounded block border-purple-500 w-full border-2  focus: outline-none focus:ring focus:border-blue-500 "
+            className="p-3 rounded block border-[#0f360a] w-full border-2  focus: outline-none focus:border-[#4cda3a] "
           />
           <ErrorMessage name="username" component={TextError} />
           <Field
             type="email"
             name="email"
             placeholder="Email"
-            className="p-3 rounded block border-purple-500 w-full border-2 focus: outline-none focus:ring focus:border-blue-500 "
+            className="p-3 rounded block border-[#0f360a] w-full border-2 focus: outline-none focus:border-[#4cda3a] "
           />
           <ErrorMessage name="email" component={TextError} />
           <Field
             type="password"
             name="password"
             placeholder="Password"
-            className="p-3 rounded block border-purple-500 w-full border-2 focus: outline-none focus:ring focus:border-blue-500 "
+            className="p-3 rounded block border-[#0f360a] w-full border-2 focus: outline-none focus:border-[#4cda3a] "
           />
           <ErrorMessage name="password" component={TextError} />
           <Field
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"
-            className="p-3 rounded block border-purple-500 w-full border-2 focus: outline-none focus:ring focus:border-blue-500 "
+            className="p-3 rounded block border-[#0f360a] w-full border-2 focus: outline-none focus:border-[#4cda3a] "
           />
           <ErrorMessage name="confirmPassword">
             {(errMsg) => {
-              return <div className="text-green-500">{errMsg}</div>;
+              return <div className="text-red-500">{errMsg}</div>;
             }}
           </ErrorMessage>
           <button
             type="submit"
-            className="p-3 w-full cursor-pointer rounded-md bg-purple-800 text-white block hover:bg-purple-700"
+            className="p-3 w-full cursor-pointer rounded-md bg-[#0f360a] text-white block hover:bg-[#effced] hover:text-[#0f360a] duration-500"
           >
             Submit
           </button>
-          <span>
+          <span className="text-black">
             Already have a account?
-            <Link to="/login" className="hover:underline text-purple-500">
+            <Link
+              to="/login"
+              className="hover:underline text-[#23691a] duration-500 ml-1"
+            >
               Login
             </Link>
           </span>

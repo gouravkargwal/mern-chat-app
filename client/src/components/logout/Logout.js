@@ -11,9 +11,9 @@ const Logout = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-white p-2 rounded-md hover:bg-gray-200"
+      className="bg-[#195a11] duration-500 p-2 rounded-md hover:bg-[#8de881] text-white hover:text-[#0f360a]"
     >
-      <BiPowerOff />
+      <BiPowerOff size={"1rem"} />
     </button>
   );
 };

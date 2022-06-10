@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, createContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 import appConstant from "../utils/ApiRoutes";
 
 export const ChatContext = createContext();
@@ -21,12 +21,11 @@ const ChatContextProvider = (props) => {
   useEffect(() => {
     async function fetchData() {
       // Check for logged in user
-      if (!localStorage.getItem("chat-app-user")) navigate("/login");
-
-      // Set current user
-      setCurrentUser(await JSON.parse(localStorage.getItem("chat-app-user")));
+      if (localStorage.getItem("chat-app-user")) {
+        // Set current user
+        setCurrentUser(await JSON.parse(localStorage.getItem("chat-app-user")));
+      }
     }
-
     fetchData();
   }, [navigate]);
 
@@ -45,7 +44,6 @@ const ChatContextProvider = (props) => {
 
   // Change current chat user
   const handleChatChange = (chat) => {
-    console.log(chat);
     setCurrentChat(chat);
   };
 
@@ -101,19 +99,13 @@ const ChatContextProvider = (props) => {
     }
   }, [socket]);
 
-  //
+  // Setting arrival messages and updating the state
   useEffect(() => {
     arrivalMessage &&
       setMessages((prev) => {
         return [...prev, arrivalMessage];
       });
   }, [arrivalMessage]);
-
-  // Socket io add user event emitted
-  useEffect(() => {
-    if (!currentUser) return;
-    socket.emit("add-user", currentUser._id);
-  }, [currentUser]);
 
   // Scroll into the latest messages
   useEffect(() => {

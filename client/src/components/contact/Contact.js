@@ -22,26 +22,35 @@ const Contact = () => {
   return (
     <>
       {currentUserName && (
-        <div className="container h-[85vh] grid grid-rows-[10%_80%_10%] bg-[#131013] rounded-md overflow-hidden">
-          <h2 className="p-2 text-white text-center font-extrabold bg-gradient-to-r from-[#434343] to-[#0000]">
-            Toop
-          </h2>
+        <div className="container h-[85vh] grid grid-rows-[10%_80%_10%] bg-[#131013] overflow-hidden">
+          <div className="p-2 text-white text-center font-extrabold bg-[#cef5c9] flex items-center justify-center">
+            <img
+              src="https://media.istockphoto.com/vectors/vector-leaf-letter-design-t-vector-id1223595958?k=20&m=1223595958&s=612x612&w=0&h=tcXg1Ii3lhoyrWXO2LuMs8kzeSrmQO_MLxt1QiNg2mM="
+              alt="logo"
+              className="w-[40px] rounded-md"
+            />
+            <h2 className="text-[#0f360a] text-3xl">oop</h2>
+          </div>
           <div className="bg-white hover:overflow-y-auto overflow-hidden">
             {contacts.map((contact, index) => {
               // console.log(contact, "Contact Map", index, "Index Map");
               return (
                 <div
-                  className={`contact cursor-pointer ${
+                  className={`contact cursor-pointer duration-500 ${
                     index === currentSelected
-                      ? "bg-gray-300 m-1 rounded-md"
-                      : ""
+                      ? "bg-[#0f360a] m-1 rounded-md text-white"
+                      : "text-[#0f360a]"
                   }`}
                   key={index}
                   onClick={() => {
                     changeCurrentChat(index, contact);
                   }}
                 >
-                  <div className="username p-4 hover:bg-gray-200 m-1 rounded-md flex justify-start items-center">
+                  <div
+                    className={`p-3 ${
+                      index === currentSelected ? "" : "hover:bg-[#effced]"
+                    } m-1 rounded-md flex justify-start items-center duration-500`}
+                  >
                     <FaUser />
                     <span className="ml-2 capitalize">{contact.name}</span>
                   </div>
@@ -49,10 +58,10 @@ const Contact = () => {
               );
             })}
           </div>
-          <h2 className="username bg-gradient-to-r from-[#434343] to-[#0000] p-2 w-full text-center font-semibold text-white rounded-md flex justify-evenly items-center">
-            <AiOutlineUser />
-            <span>{currentUserName}</span>
-          </h2>
+          <div className="username bg-[#cef5c9] w-full font-semibold text-[#0f360a] flex justify-center items-center text-lg truncate">
+            <FaUser />
+            <span className="ml-1">{currentUserName}</span>
+          </div>
         </div>
       )}
     </>

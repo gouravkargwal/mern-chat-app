@@ -8,12 +8,12 @@ const Chat = () => {
   let { currentUser, currentChat } = useContext(ChatContext);
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-[#29323c] to-[#485563] h-screen">
+    <div className="flex flex-col justify-center items-center bg-[#0f360a] h-screen">
       <div className="grid grid-cols-[1fr_3fr] h-[85vh] w-[85vw] overflow-hidden rounded-md">
         <div className="contacts mr-2">
           <Contact />
         </div>
-        <div className="chats bg-gradient-to-r from-[#cfd9df] to-[#e2ebf0] rounded-md">
+        <div className="chats">
           {currentUser && currentChat === undefined ? (
             <Welcome />
           ) : (
